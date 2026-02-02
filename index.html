@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<title>SchoolHelper</title>
+<style>
+    /* ---------------- Global ---------------- */
+    * { box-sizing: border-box; margin:0; padding:0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+    body { background: #f7f3f7; color: #333; }
+    h1,h2,h3,h4 { color:#2c3e50; }
+
+    /* ---------------- Header ---------------- */
+    header { background: linear-gradient(90deg,#f7c5c5,#c5b3f7); color:white; padding:25px; text-align:center; border-bottom:5px solid #c5f0f7; box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+    header h1 { font-size:2.5em; letter-spacing:1px;}
+
+    /* ---------------- Main ---------------- */
+    main { max-width:950px; margin:20px auto; background:white; padding:25px; border-radius:15px; box-shadow:0 6px 15px rgba(0,0,0,0.1); }
+
+    /* ---------------- Forms ---------------- */
+    form { display:flex; flex-direction:column; }
+    input, select, textarea, button { padding:12px; margin-bottom:15px; border-radius:8px; border:1px solid #ccc; font-size:1em;}
+    input:focus, textarea:focus, select:focus { outline:none; border-color:#8e44ad; }
+    button { background:#8e44ad; color:white; border:none; cursor:pointer; transition:0.3s; font-weight:bold;}
+    button:hover { background:#5e3370; }
+
+    /* ---------------- Navigation ---------------- */
+    nav { margin:20px 0; display:flex; gap:12px; flex-wrap:wrap;}
+    nav button { flex:1; background:linear-gradient(45deg,#f7c5c5,#c5b3f7); color:white; font-weight:bold; box-shadow:0 4px 6px rgba(0,0,0,0.1);}
+    nav button:hover { opacity:0.85; }
+
+    /* ---------------- Cards ---------------- */
+    .card { background:#fff0f5; padding:15px; margin:12px 0; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1); transition:0.3s; }
+    .card:hover { transform:scale(1.02); }
+
+    /* ---------------- Lists ---------------- */
+    ul { list-style:none; padding-left:0; }
+    li { margin-bottom:10px; padding:12px; background:#f0f8ff; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.05); }
+
+    /* ---------------- Textarea ---------------- */
+    textarea { resize: vertical; min-height:90px; }
+
+    /* ---------------- Hidden ---------------- */
+    .hidden { display:none; }
+
+    /* ---------------- Responsive ---------------- */
+    @media(max-width:600px){ main{padding:15px;} nav{flex-direction:column;} }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>SchoolHelper 🎓✨</h1>
+</header>
+
+<main>
+
+<!-- -------- Registration -------- -->
+<div id="registerDiv">
+    <h2>Тіркелу 📝</h2>
+    <form id="registerForm">
+        <input type="text" id="name" placeholder="Аты-жөні" required>
+        <input type="text" id="grade" placeholder="Сыныбы" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Пароль" required>
+        <button type="submit">Тіркелу</button>
+    </form>
+    <p>Кіру үшін <a href="#" id="showLogin">осы жерді басыңыз</a></p>
+</div>
+
+<!-- -------- Login -------- -->
+<div id="loginDiv" class="hidden">
+    <h2>Кіру 🔑</h2>
+    <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="Email" required>
+        <input type="password" id="loginPassword" placeholder="Пароль" required>
+        <button type="submit">Кіру</button>
+    </form>
+    <p>Тіркелу үшін <a href="#" id="showRegister">осы жерді басыңыз</a></p>
+</div>
+
+<!-- -------- Profile -------- -->
+<div id="profileDiv" class="hidden">
+    <h2>Сәлем, <span id="userName"></span>! 👋</h2>
+    <button id="logoutBtn">Шығу</button>
+
+    <nav>
+        <button id="subjectsBtn">Пәндер 📚</button>
+        <button id="homeworkBtn">Үй тапсырмасы 🏠</button>
+        <button id="qnaBtn">Сұрақ-Жауап ❓</button>
+    </nav>
+
+    <!-- -------- Subjects -------- -->
+    <div id="subjectsDiv" class="hidden">
+        <h3>Пәндер 🏫</h3>
+
+        <div class="card">
+            <b>Тарих 🏰:</b> Қазақ хандығы және Абылай хан:
+            <p>• Абылай хан XVIII ғасырдағы қазақ хандарының бірі, Қазақ хандығын біріктірді. 👑</p>
+            <p>• Ресей және Қытаймен дипломатиялық байланыс жүргізді, мемлекет қауіпсіздігін қамтамасыз етті. 🌏</p>
+            <p>• Әскери және саяси көшбасшылық қабілеттері жоғары болды, елдің бірлігін сақтады. ⚔️</p>
+            <p>• Қазақстан тарихында Абылай ханның рөлі маңызды, оның есімі көптеген деректерде және әдеби шығармаларда кездеседі. 📜</p>
+        </div>
+
+        <div class="card">
+            <b>Математика ➗:</b> Квадрат теңдеулер және бөлшектер:
+            <p>• Квадрат теңдеулерді шешу әдістері: факторизация, формула арқылы. 🔢</p>
+            <p>• Бөлшектерді қосу, азайту, көбейту және бөлу тәсілдері. ✏️</p>
+            <p>• Математикада есептің дұрыс жолын таңдау және дәл есептеу маңызды. 📐</p>
+            <p>• Математикалық логика мен дәлелдеу дағдылары күнделікті өмірде де қолданылады. 🧮</p>
+        </div>
+
+        <div class="card">
+            <b>Қазақ тілі 📖:</b> Сөйлем мүшелері мен етістіктің шақтары:
+            <p>• Сөйлем мүшелерін дұрыс анықтау – мәтінді түсінудің негізі. ✍️</p>
+            <p>• Етістіктің шақтарын меңгеру арқылы сөйлемнің уақытын дұрыс көрсетеміз. ⏳</p>
+            <p>• Сөйлем құрылысына мән беріп, сөздерді дұрыс орналастыру – жазбаша және ауызша сөйлеудің сапасын арттырады. 📝</p>
+            <p>• Тілдің байлығы мен мәнерлілігін арттыру үшін синонимдер мен фразеологиялық тіркестерді пайдалану маңызды. 💬</p>
+        </div>
+
+        <div class="card">
+            <b>Информатика 💻:</b> Алгоритмдер және бағдарламалау негіздері:
+            <p>• Алгоритм – белгілі бір тапсырманы орындау үшін қадамдар тізбегі. 🤖</p>
+            <p>• Циклдер мен шарттар арқылы бағдарламаның логикасын құру. 🔁</p>
+            <p>• Функциялар мен айнымалылар бағдарламаны құрылымды етеді және кодты қайта пайдалануға мүмкіндік береді. 🖥️</p>
+            <p>• Бағдарламалау тілін меңгеру арқылы түрлі есептерді автоматтандыруға болады. ⚙️</p>
+        </div>
+
+    </div>
+
+    <!-- -------- Homework -------- -->
+    <div id="homeworkDiv" class="hidden">
+        <h3>Үй тапсырмасы 📝</h3>
+        <ul id="homeworkList">
+            <li>Тарих: Қазақ хандығының құрылуы туралы 5 сөйлем жазыңыз ✏️</li>
+            <li>Математика: x² - 5x + 6 = 0 теңдеуін шешу 🔢</li>
+            <li>Қазақ тілі: 5 сөйлем құрап, етістік шақтарын көрсетіңіз 📖</li>
+            <li>Информатика: 1-ден 10-ға дейінгі сандарды шығаратын цикл жазу 💻</li>
+        </ul>
+        <textarea id="homeworkAnswer" placeholder="Жауабыңызды енгізіңіз"></textarea>
+        <button id="submitHomework">Жіберу</button>
+    </div>
+
+    <!-- -------- QnA -------- -->
+    <div id="qnaDiv" class="hidden">
+        <h3>Сұрақ-Жауап ❓</h3>
+        <select id="qnaSubjectSelect">
+            <option value="Тарих">Тарих 🏰</option>
+            <option value="Математика">Математика ➗</option>
+            <option value="Қазақ тілі">Қазақ тілі 📖</option>
+            <option value="Информатика">Информатика 💻</option>
+        </select>
+        <textarea id="qnaQuestion" placeholder="Сұрағыңызды енгізіңіз"></textarea>
+        <button id="submitQuestion">Сұрақ жіберу</button>
+
+        <h4>Барлық сұрақтар:</h4>
+        <ul id="qnaList"></ul>
+    </div>
+
+</div>
+</main>
+
+<script>
+let users=[]; let currentUser=null; let qnaData=[];
+
+// Registration
+document.getElementById('registerForm').onsubmit=function(e){
+    e.preventDefault();
+    const user={
+        name:document.getElementById('name').value,
+        grade:document.getElementById('grade').value,
+        email:document.getElementById('email').value,
+        password:document.getElementById('password').value
+    };
+    if(users.find(u=>u.email===user.email)){ alert("Бұл email бұрын тіркелген!"); return;}
+    users.push(user); alert("Тіркелу сәтті өтті!");
+    document.getElementById('registerDiv').classList.add('hidden');
+    document.getElementById('loginDiv').classList.remove('hidden');
+}
+
+// Login
+document.getElementById('loginForm').onsubmit=function(e){
+    e.preventDefault();
+    const email=document.getElementById('loginEmail').value;
+    const password=document.getElementById('loginPassword').value;
+    const user=users.find(u=>u.email===email && u.password===password);
+    if(user){ currentUser=user;
+        document.getElementById('userName').innerText=currentUser.name;
+        document.getElementById('loginDiv').classList.add('hidden');
+        document.getElementById('profileDiv').classList.remove('hidden');
+    } else{ alert("Қате email немесе пароль!"); }
+}
+
+// Navigation
+document.getElementById('showLogin').onclick=function(){document.getElementById('registerDiv').classList.add('hidden'); document.getElementById('loginDiv').classList.remove('hidden');}
+document.getElementById('showRegister').onclick=function(){document.getElementById('loginDiv').classList.add('hidden'); document.getElementById('registerDiv').classList.remove('hidden');}
+document.getElementById('logoutBtn').onclick=function(){location.reload();}
+
+document.getElementById('subjectsBtn').onclick=function(){ hideAllSections(); document.getElementById('subjectsDiv').classList.remove('hidden');}
+document.getElementById('homeworkBtn').onclick=function(){ hideAllSections(); document.getElementById('homeworkDiv').classList.remove('hidden');}
+document.getElementById('qnaBtn').onclick=function(){ hideAllSections(); document.getElementById('qnaDiv').classList.remove('hidden');}
+
+function hideAllSections(){
+    document.getElementById('subjectsDiv').classList.add('hidden');
+    document.getElementById('homeworkDiv').classList.add('hidden');
+    document.getElementById('qnaDiv').classList.add('hidden');
+}
+
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K1nopoisk1 Bot | Кино әлеміне жолдама</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { --main: #ff6600; --dark: #0a0a0a; --gray: #1a1a1a; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--dark); color: white; font-family: 'Montserrat', sans-serif; line-height: 1.6; }
+
+        /* Шапка */
+        header { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.8); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #333; }
+        .logo { font-size: 1.5rem; font-weight: 900; color: white; text-decoration: none; }
+        .logo span { color: var(--main); }
+
+        /* Hero Section */
+        .hero { padding: 100px 5%; text-align: center; background: linear-gradient(to bottom, rgba(0,0,0,0.6), var(--dark)), url('https://source.unsplash.com/1600x900/?movie,cinema'); background-size: cover; }
+        .hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto 40px; color: #ccc; }
+
+        /* Features (Мүмкіндіктер) */
+        .features { padding: 80px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .f-card { background: var(--gray); padding: 40px; border-radius: 20px; transition: 0.3s; border: 1px solid #333; }
+        .f-card:hover { border-color: var(--main); transform: translateY(-10px); }
+        .f-card h3 { color: var(--main); margin-bottom: 15px; font-size: 1.5rem; }
+
+        /* Түсіндірме бөлімі */
+        .how-it-works { padding: 80px 5%; background: #0f0f0f; text-align: center; }
+        .how-it-works h2 { margin-bottom: 50px; font-size: 2.5rem; }
+        .step { margin-bottom: 30px; font-size: 1.1rem; color: #aaa; }
+        .step b { color: white; }
+
+        /* Батырма */
+        .cta-btn { display: inline-block; background: var(--main); color: white; padding: 20px 50px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.2rem; transition: 0.3s; box-shadow: 0 10px 30px rgba(255, 102, 0, 0.4); }
+        .cta-btn:hover { background: #ff8533; transform: scale(1.05); box-shadow: 0 15px 40px rgba(255, 102, 0, 0.6); }
+
+        footer { padding: 50px; text-align: center; border-top: 1px solid #333; color: #555; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">K1NO<span>POISK</span>1</a>
+    </header>
+
+    <section class="hero">
+        <h1>Кино іздеуден шаршадың ба?</h1>
+        <p>Біздің Telegram-бот арқылы 500,000-нан астам фильм, сериал және анимені бір секундта тап. Тіркелусіз, жарнамасыз, тек сапалы контент.</p>
+        <a href="https://t.me/K1nopoisk1_bot" class="cta-btn">Ботты іске қосу</a>
+    </section>
+
+    <section class="features">
+        <div class="f-card">
+            <h3>Мезеттік іздеу</h3>
+            <p>Фильм атын жазсаң болды — бот саған бірден көруге сілтеме мен сипаттамасын береді.</p>
+        </div>
+        <div class="f-card">
+            <h3>Full HD Сапа</h3>
+            <p>Барлық видеолар 720p және 1080p форматында қолжетімді. Сүйікті туындыларыңды анық бейнеде тамашала.</p>
+        </div>
+        <div class="f-card">
+            <h3>Тегін қолдану</h3>
+            <p>Біз ешқандай жазылым талап етпейміз. Барлық функциялар кез келген уақытта тегін.</p>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <h2>Бұл қалай жұмыс істейді?</h2>
+        <div class="step">1. <b>"Ботты іске қосу"</b> батырмасын бас.</div>
+        <div class="step">2. Телеграмда <b>/start</b> командасын жібер.</div>
+        <div class="step">3. Өзіңе ұнайтын <b>фильм атын</b> жаз.</div>
+        <div class="step">4. Сапасын таңдап, <b>көруді баста!</b></div>
+        <br><br>
+        <a href="https://t.me/K1nopoisk1_bot" class="cta-btn">Қазір көру</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 K1nopoisk1 Bot Project. Барлық құқықтар қорғалған.</p>
+    </footer>
+
+</body>
+</html>
